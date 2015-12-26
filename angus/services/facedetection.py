@@ -13,8 +13,11 @@ LOGGER = logging.getLogger(__name__)
 def compute(resource, data):
     img = str(data['image'].path)
     img = cv2.imread(img)
-    base = "resources/classifiers/haarcascade_"
-    face_cascade = cv2.CascadeClassifier(base + 'frontalface_alt.xml')
+
+    home = os.path.dirname(os.path.realpath(__file__))
+    classifiers = home + "/resources/classifiers/"
+    classifier = classifiers + 'haarcascade_frontalface_alt.xml'
+    face_cascade = cv2.CascadeClassifier(classifier)
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
@@ -26,14 +29,10 @@ def compute(resource, data):
         "input_size": [width, height],
         "nb_faces": len(faces),
         "faces": [{
-            "roi": [x, y, w, h],
+            "roi": [int(x), int(y), int(w), int(h)],
             "roi_fonfidence": 0,
         } for (x, y, w, h) in faces]
     }
-
-    for (x, y, w, h) in faces:
-        cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
-
     resource.update(result)
 
 
