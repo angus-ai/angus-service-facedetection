@@ -18,7 +18,8 @@ def compute(resource, data):
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    height, width,  = img.shape
+    height = img.shape[0]
+    width = img.shape[1]
 
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
     result = {
