@@ -23,7 +23,7 @@
 
 from setuptools import setup, find_packages
 
-__updated__ = "2015-12-26"
+__updated__ = "2015-12-28"
 __author__ = "Aurélien Moreau"
 __copyright__ = "Copyright 2015, Angus.ai"
 __credits__ = ["Aurélien Moreau", "Gwennaël Gâté"]
@@ -37,7 +37,7 @@ setup(name='angus-service-facedetection',
       url='http://www.angus.ai/',
       install_requires=[
           "pytest==2.6.4",
-          "angus-api-framework",
+          "angus-framework",
           "python-opencv",
       ],
       packages=find_packages(),

@@ -1,2 +1,2 @@
-angus-api-framework
+angus-framework
 python-opencv
