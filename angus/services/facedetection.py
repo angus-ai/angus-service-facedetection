@@ -18,11 +18,13 @@
 # specific language governing permissions and limitations
 # under the License.
 
-import cv2
 import logging
 import os
 
+import cv2
+
 import angus.service
+
 
 LOGGER = logging.getLogger(__name__)
 
@@ -61,7 +63,7 @@ def main():
         'face_detection', 1,
         port,
         compute,
-        resource_storage=dict(), threads=4
+        resource_storage=angus.storage.MemoryStorage(), threads=4
     )
     service.start()
 
